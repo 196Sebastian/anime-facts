@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface AnimeFactService {
 
-    @GET("api/v1")
+    @GET("top/anime?=1")
     fun getAnimeFactById() : Call<Any>
 }

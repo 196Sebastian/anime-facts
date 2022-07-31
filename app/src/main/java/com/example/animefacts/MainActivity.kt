@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://anime-facts-rest-api.herokuapp.com/")
+            .baseUrl("https://api.jikan.moe/v4/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
 
