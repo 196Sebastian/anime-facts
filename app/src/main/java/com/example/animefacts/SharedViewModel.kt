@@ -18,9 +18,9 @@ class SharedViewModel: ViewModel() {
     private val _animeImageLiveData = MutableLiveData<GetAnimePictureByIdResponse>()
     val animeImageLiveData: LiveData<GetAnimePictureByIdResponse?> = _animeImageLiveData
 
-    fun refreshAimeImage() {
+    fun refreshAimeImage(animeId: Int) {
         viewModelScope.launch {
-            val imageResponse = repository.getAnimeImage()
+            val imageResponse = repository.getAnimeImage(animeId)
             _animeImageLiveData.postValue(imageResponse)
         }
     }

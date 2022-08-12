@@ -9,20 +9,28 @@ class SharedRepository {
     suspend fun getAnimeGenre(): GetAnimeByGenreResponse? {
         val request = NetworkLayer.apiClient.getAnimeGenre()
 
-        if (request.isSuccessful) {
-            return request.body()!!
+        if (request.failed) {
+            return null
         }
 
-        return null
+        if (!request.isSuccessful) {
+            return null
+        }
+
+        return request.body
     }
 
-    suspend fun getAnimeImage(): GetAnimePictureByIdResponse? {
-        val request = NetworkLayer.apiClient.getAnimePictureById()
+    suspend fun getAnimeImage(animeId: Int): GetAnimePictureByIdResponse? {
+        val request = NetworkLayer.apiClient.getAnimePictureById(animeId)
 
-        if (request.isSuccessful) {
-            return request.body()!!
+        if (request.failed) {
+            return null
         }
 
-        return null
+        if (!request.isSuccessful) {
+            return null
+        }
+
+        return request.body
     }
 }

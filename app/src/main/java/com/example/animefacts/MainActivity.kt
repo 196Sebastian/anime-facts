@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         val number = findViewById<TextView>(R.id.numberOfAnimeInGenreTextView)
         val imageView = findViewById<ImageView>(R.id.animeGenreImageView)
 
-        viewModel.refreshAimeImage()
+
+        viewModel.refreshAimeImage(1225)
         viewModel.refreshAnimeGenre()
         viewModel.animeImageLiveData.observe(this) { response ->
             if (response == null) {
