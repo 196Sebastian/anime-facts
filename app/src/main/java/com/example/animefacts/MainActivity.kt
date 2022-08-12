@@ -6,6 +6,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.airbnb.epoxy.EpoxyRecyclerView
 import com.squareup.picasso.Picasso
 
 
@@ -15,18 +16,13 @@ class MainActivity : AppCompatActivity() {
         ViewModelProvider(this)[SharedViewModel::class.java]
     }
 
+    private val epoxyController = AnimeDetailsEpoxyController()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val title = findViewById<TextView>(R.id.animeGenreTextView)
-        val link = findViewById<TextView>(R.id.actualLinkTextView)
-        val number = findViewById<TextView>(R.id.numberOfAnimeInGenreTextView)
-        val imageView = findViewById<ImageView>(R.id.animeGenreImageView)
-
-
-        viewModel.refreshAimeImage(1225)
-        viewModel.refreshAnimeGenre()
+        viewModel.refreshAimeImage(5114)
         viewModel.animeImageLiveData.observe(this) { response ->
             if (response == null) {
                 Toast.makeText(
@@ -35,12 +31,11 @@ class MainActivity : AppCompatActivity() {
                 ).show()
                 return@observe
             }
-
-            val image = response.data[1].jpg.large_image_url
-            Picasso.get().load(image).into(imageView)
         }
 
         viewModel.animeGenreLiveData.observe(this) { response ->
+
+            epoxyController.animeResponse = response
             if (response == null) {
                 Toast.makeText(
                     this@MainActivity, "Unsuccessful Network Call!",
@@ -49,9 +44,10 @@ class MainActivity : AppCompatActivity() {
                 return@observe
             }
 
-            title.text = response.data[1].name
-            link.text = response.data[1].url
-            number.text = response.data[1].count.toString()
+            viewModel.refreshAnimeGenre()
+
+            val epoxyRecyclerView = findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView)
+            epoxyRecyclerView.setControllerAndBuildModels(epoxyController)
         }
     }
 }

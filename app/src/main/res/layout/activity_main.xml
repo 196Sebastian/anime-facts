@@ -3,76 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/animeGenreImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintDimensionRatio="1:1.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/epoxyRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="24dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/animeGenreTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/animeGenreImageView"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Action" />
-
-    <View
-        android:id="@+id/divider"
-        style="@style/Divider"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@id/animeGenreImageView"
-        app:layout_constraintTop_toBottomOf="@+id/animeGenreTextView" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/linkToListTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/animeGenreImageView"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
-        tools:text="Link to List:" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/actualLinkTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/animeGenreImageView"
-        app:layout_constraintTop_toBottomOf="@+id/linkToListTitleTextView"
-        tools:text="https://myanimelist.net/anime/genre/1/Action" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/numberOfAnimeTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@+id/animeGenreImageView"
-        app:layout_constraintTop_toBottomOf="@+id/actualLinkTextView"
-        tools:text="Number of Anime in Genre:" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/numberOfAnimeInGenreTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/numberOfAnimeTitleTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/numberOfAnimeTitleTextView"
-        app:layout_constraintTop_toTopOf="@+id/numberOfAnimeTitleTextView"
-        tools:text="2500" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
