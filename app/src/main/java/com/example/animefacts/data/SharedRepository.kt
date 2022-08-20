@@ -1,4 +1,4 @@
-package com.example.animefacts
+package com.example.animefacts.data
 
 import com.example.animefacts.network.GetAnimeByGenreResponse
 import com.example.animefacts.network.GetAnimePictureByIdResponse

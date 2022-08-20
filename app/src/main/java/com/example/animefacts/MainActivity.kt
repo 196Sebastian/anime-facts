@@ -1,13 +1,12 @@
 package com.example.animefacts
 
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.airbnb.epoxy.EpoxyRecyclerView
-import com.squareup.picasso.Picasso
+import com.example.animefacts.data.SharedViewModel
+import com.example.animefacts.epoxy.AnimeDetailsEpoxyController
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.refreshAimeImage(5114)
         viewModel.animeImageLiveData.observe(this) { response ->
+
+            epoxyController.animeImageView = response
             if (response == null) {
                 Toast.makeText(
                     this@MainActivity, "Unsuccessful Network Call!",
@@ -31,8 +32,12 @@ class MainActivity : AppCompatActivity() {
                 ).show()
                 return@observe
             }
+
+            val epoxyRecyclerView = findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView)
+            epoxyRecyclerView.setControllerAndBuildModels(epoxyController)
         }
 
+        viewModel.refreshAnimeGenre()
         viewModel.animeGenreLiveData.observe(this) { response ->
 
             epoxyController.animeResponse = response
@@ -43,8 +48,6 @@ class MainActivity : AppCompatActivity() {
                 ).show()
                 return@observe
             }
-
-            viewModel.refreshAnimeGenre()
 
             val epoxyRecyclerView = findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView)
             epoxyRecyclerView.setControllerAndBuildModels(epoxyController)

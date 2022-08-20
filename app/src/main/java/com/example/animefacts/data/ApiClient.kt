@@ -1,6 +1,6 @@
 package com.example.animefacts.data
 
-import com.example.animefacts.SimpleResponse
+import com.example.animefacts.network.SimpleResponse
 import com.example.animefacts.network.GetAnimeByGenreResponse
 import com.example.animefacts.network.GetAnimePictureByIdResponse
 import retrofit2.Response

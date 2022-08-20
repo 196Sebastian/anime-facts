@@ -1,9 +1,10 @@
-package com.example.animefacts
+package com.example.animefacts.viewbinding
 
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.viewbinding.ViewBinding
 import com.airbnb.epoxy.EpoxyModel
+import com.example.animefacts.R
 import java.lang.reflect.Method
 import java.lang.reflect.ParameterizedType
 import java.util.concurrent.ConcurrentHashMap

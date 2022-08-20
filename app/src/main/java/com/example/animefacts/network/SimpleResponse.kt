@@ -1,4 +1,4 @@
-package com.example.animefacts
+package com.example.animefacts.network
 
 import retrofit2.Response
 import java.lang.Exception

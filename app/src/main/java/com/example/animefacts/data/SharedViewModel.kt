@@ -1,9 +1,10 @@
-package com.example.animefacts
+package com.example.animefacts.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.animefacts.data.SharedRepository
 import com.example.animefacts.network.GetAnimeByGenreResponse
 import com.example.animefacts.network.GetAnimePictureByIdResponse
 import kotlinx.coroutines.launch
